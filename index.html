@@ -11,11 +11,16 @@
         var $body = $('body');
         $body.html('');
 
+        /* show the user new tweets somehow (as they're created or after the user hits a button) */
+        /* redesign interface to be not hideous */
+        /* allow the user to click on a username to see that user's timeline */
+        /* allow the user to create tweets (shouldn't need to modify main js file) */
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          /* reformat text to be user-readable (eg "10 minutes ago") - find and use a library for this */
+          $tweet.text('@' + tweet.user + ' (' + tweet.created_at + '): ' + tweet.message);
           $tweet.appendTo($body);
           index -= 1;
         }

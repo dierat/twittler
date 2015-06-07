@@ -3,13 +3,14 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <script src="moment.min.js"></script>
   </head>
   <body>
     <script>
-
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
+        
 
         /* show the user new tweets somehow (as they're created or after the user hits a button) */
         /* redesign interface to be not hideous */
@@ -19,8 +20,8 @@
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-          /* reformat text to be user-readable (eg "10 minutes ago") - find and use a library for this */
-          $tweet.text('@' + tweet.user + ' (' + tweet.created_at + '): ' + tweet.message);
+          var time = moment(tweet.created_at).fromNow();
+          $tweet.text('@' + tweet.user + ' (' + time + '): ' + tweet.message);
           $tweet.appendTo($body);
           index -= 1;
         }

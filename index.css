@@ -27,12 +27,12 @@ header {
 
 h1 {
 	font-style: italic;
-	margin-top: 10px;
+	margin-top: 14px;
 	margin-bottom: 0;
 }
 
 h5 {
-	margin-bottom: 8px;
+	margin-bottom: 10px;
 }
 
 #loadButton {
@@ -61,6 +61,7 @@ h5 {
 
 .time {
 	color: #A4D8CD;
+	font-size: 14px;
 }
 
 .message {

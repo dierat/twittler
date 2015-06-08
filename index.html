@@ -28,14 +28,22 @@
         var $tweetList = $('<div id="tweetList"/>');
 
 
-        function loadTweets() {
+        function loadTweets(user) {
           /* allow the user to click on a username to see that user's timeline */
           /* allow the user to create tweets (shouldn't need to modify main js file) */
           $tweetList.html('');
 
-          var index = streams.home.length - 1;
+          var stream;
+
+          if (user && streams.users[user]) {
+            stream = streams.users[user];
+          } else {
+            stream = streams.home;
+          }
+
+          var index = stream.length - 1;
           while(index >= 0){
-            var tweet = streams.home[index];
+            var tweet = stream[index];
 
             var user = tweet.user;
             var time = moment(tweet.created_at).fromNow();
@@ -47,17 +55,23 @@
             index -= 1;
           }
 
+          $('.user').on('click', function(){
+            var user = $(this).text().replace('@','');
+            loadTweets(user);
+          });
+
         }
 
 
         $content.append($tweetList);
 
         $('#loadButton').on('click', function(){
-          console.log("clicked!!!");
           loadTweets();
         });
 
         loadTweets();
+
+
 
       });
 

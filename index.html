@@ -23,9 +23,9 @@
         $body.append($content);
 
         var $twittleForm = $('<div id="twittleForm"/>');
-        var $messageField = $('<textarea rows="3" cols="53">Add your twittle here!</textarea><br>');
+        var $messageField = $('<textarea rows="3" cols="53" placeholder="Add your twittle here!" id="messageField"></textarea><br>');
         $twittleForm.append($messageField);
-        var $userField = $('<input type="text" name="userName" value="Add your username here">');
+        var $userField = $('<input type="text" name="userName" placeholder="Add your username here" id="userField">');
         $twittleForm.append($userField);
         var $submitButton = $('<button type="button" id="submitButton">Submit your twittle</button>');
         $twittleForm.append($submitButton);
@@ -78,14 +78,21 @@
           loadTweets();
         });
 
-        // // add event listener for form submission that calls addTweet()
-        // $(#submitButton).on('click', function(){
-        //   // get value of textarea, set to message
-        //   // get value of input, set to user
-        //   // make tweet object {user: message}
-        //   // call addTweet(tweet)
-        //   return;
-        // });
+        // add event listener for form submission that calls addTweet()
+        $('#submitButton').on('click', function(){
+          // get value of textarea, set to message
+          var msg = $("#messageField").val();
+          console.log("msg = ", msg);
+          // get value of input, set to user
+          var usr = $("#userField").val();
+          console.log("usr = ", usr);
+          // make tweet object {user: message}
+          var twt = {user: usr, message: msg, created_at: new Date()};
+          console.log("twt = ", twt);
+          // call addTweet(tweet)
+          addTweet(twt);
+          loadTweets();
+        });
 
         $('#topButton').on('click', function(){
           $("html, body").animate({scrollTop: 0}, "slow");

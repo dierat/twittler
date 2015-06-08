@@ -82,3 +82,8 @@ button {
 	color: #454559;
 	margin-left: 7px;
 }
+
+#topButton {
+	display: block;
+	margin: 0 auto;
+}

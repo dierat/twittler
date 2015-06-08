@@ -22,6 +22,15 @@
         var $content = $('<div class="content"/>');
         $body.append($content);
 
+        var $twittleForm = $('<div id="twittleForm"/>');
+        var $messageField = $('<textarea rows="3" cols="53">Add your twittle here!</textarea><br>');
+        $twittleForm.append($messageField);
+        var $userField = $('<input type="text" name="userName" value="Add your username here">');
+        $twittleForm.append($userField);
+        var $submitButton = $('<button type="button" id="submitButton">Submit your twittle</button>');
+        $twittleForm.append($submitButton);
+        $content.append($twittleForm);
+
         var $loadButton = $('<button type="button" id="loadButton">Load all new twittles</button>');
         $content.append($loadButton);
 
@@ -29,7 +38,6 @@
 
 
         function loadTweets(user) {
-          /* allow the user to click on a username to see that user's timeline */
           /* allow the user to create tweets (shouldn't need to modify main js file) */
           $tweetList.html('');
 

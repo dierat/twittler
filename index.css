@@ -4,25 +4,19 @@ body {
 	color: #454559;
 }
 
-.content {
-	padding-top: 165px;
-	max-width: 80%;
-	margin: 0px auto 0px auto;
-}
-
 a {
 	color: #E88D67;
 }
 
 header {
-	position: fixed;
+	position: absolute;
 	width: 100%;
 	text-align: center;
 	background-color: #7B8CDE;
 	font-family: 'Old Standard TT', serif;
 	color: white;
 	font-size: 18px;
-	padding: 10px;
+	padding: 10px 0;
 }
 
 h1 {
@@ -35,6 +29,27 @@ h5 {
 	margin-bottom: 10px;
 }
 
+.content {
+	padding-top: 165px;
+	max-width: 85%;
+	margin: 0px auto 0px auto;
+}
+
+#twittleForm {
+	margin: 20px 0 50px 0;
+}
+
+textarea {
+	margin-bottom: 10px;
+}
+
+input {
+	margin-right: 10px;
+	width: 161px;
+	height: 35px;
+}
+
+#submitButton,
 #loadButton {
 	font-size: 16px;
 	font-family: 'Old Standard TT', serif;
@@ -47,7 +62,7 @@ h5 {
 }
 
 #tweetList {
-	padding-top: 20px;
+	padding-top: 40px;
 }
 
 .tweet {

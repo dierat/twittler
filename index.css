@@ -91,6 +91,7 @@ button {
 
 .error {
 	color: #454559;
+	font-family: 'Old Standard TT', serif;
 	padding: 10px 0;
 	display: none;
 }

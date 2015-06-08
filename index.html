@@ -35,6 +35,10 @@
         $content.append($loadButton);
 
         var $tweetList = $('<div id="tweetList"/>');
+        $content.append($tweetList);
+
+        var $topButton = $('<button type="button" id="topButton">Back to top</button>');
+        $content.append($topButton);
 
 
         function loadTweets(user) {
@@ -71,7 +75,7 @@
         }
 
 
-        $content.append($tweetList);
+        
 
         $('#loadButton').on('click', function(){
           loadTweets();

@@ -78,20 +78,14 @@
           loadTweets();
         });
 
-        // add event listener for form submission that calls addTweet()
         $('#submitButton').on('click', function(){
-          // get value of textarea, set to message
           var msg = $("#messageField").val();
-          console.log("msg = ", msg);
-          // get value of input, set to user
           var usr = $("#userField").val();
-          console.log("usr = ", usr);
-          // make tweet object {user: message}
           var twt = {user: usr, message: msg, created_at: new Date()};
-          console.log("twt = ", twt);
-          // call addTweet(tweet)
           addTweet(twt);
           loadTweets();
+          // clear form afterwards
+
         });
 
         $('#topButton').on('click', function(){

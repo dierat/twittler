@@ -36,7 +36,7 @@
         $newUserForm.append($newUserSuccess);
         var $newUserErrorEmpty = $('<div id="newUserErrorEmpty" class="error">Please enter a username!</div>');
         $newUserForm.append($newUserErrorEmpty);
-        var $newUserErrorUsed = $('<div id="newUserErrorUsed" class="error">We already have a user by the name! Is that you?? If not, please choose another username!</div>');
+        var $newUserErrorUsed = $('<div id="newUserErrorUsed" class="error">We already have a user by the name! Is that you??<br>If not, please choose another username!</div>');
         $newUserForm.append($newUserErrorUsed);
 
         var $twittleForm = $('<div id="twittleForm"/>');
@@ -106,6 +106,12 @@
           $('#newUserForm').slideToggle();
         });
 
+        $('#newUserField').on('keypress', function(){
+          $('#newUserSuccess').slideUp();
+          $('#newUserErrorEmpty').slideUp();
+          $('#newUserErrorUsed').slideUp();
+        });
+
         $('#newUserSubmit').on('click', function(){
           var usr = $('#newUserField').val();
           if (usr.length === 0){
@@ -117,6 +123,20 @@
             $('#newUserSuccess').slideDown();
             $('#newUserField').val('');
           }
+        });
+
+        $('#messageField').on('keypress', function(){
+          $('#twittleSuccess').slideUp();
+          $('#twittleErrorEmptyMessage').slideUp();
+          $('#twittleErrorEmptyUser').slideUp();
+          $('#twittleErrorUser').slideUp();
+        });
+
+        $('#userField').on('keypress', function(){
+          $('#twittleSuccess').slideUp();
+          $('#twittleErrorEmptyMessage').slideUp();
+          $('#twittleErrorEmptyUser').slideUp();
+          $('#twittleErrorUser').slideUp();
         });
 
         $('#submitButton').on('click', function(){

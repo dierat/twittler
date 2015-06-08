@@ -42,7 +42,6 @@
 
 
         function loadTweets(user) {
-          /* allow the user to create tweets (shouldn't need to modify main js file) */
           $tweetList.html('');
 
           var stream;
@@ -75,15 +74,26 @@
         }
 
 
-        
-
         $('#loadButton').on('click', function(){
           loadTweets();
         });
 
+        // // add event listener for form submission that calls addTweet()
+        // $(#submitButton).on('click', function(){
+        //   // get value of textarea, set to message
+        //   // get value of input, set to user
+        //   // make tweet object {user: message}
+        //   // call addTweet(tweet)
+        //   return;
+        // });
+
+        $('#topButton').on('click', function(){
+          $("html, body").animate({scrollTop: 0}, "slow");
+          return false;
+        });
+
+
         loadTweets();
-
-
 
       });
 

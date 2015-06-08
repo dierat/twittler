@@ -37,12 +37,27 @@ h5 {
 
 textarea {
 	margin-bottom: 10px;
+	font-family: 'Delius Swash Caps', cursive;
+	color: #454559;
+	font-size: 12px;
+	border-radius: 5px;
+	border-color: #A4D8CD;
+	padding: 10px;
 }
 
 input {
+	font-family: 'Delius Swash Caps', cursive;
+	color: #454559;
 	margin-right: 10px;
-	width: 161px;
+	width: 152px;
 	height: 35px;
+	border-top: none;
+	border-left: none;
+	border-right: none; 
+	font-size: 12px;
+	border-color: #A4D8CD;
+	border-width: 1px;
+	padding-left: 11px;
 }
 
 button {

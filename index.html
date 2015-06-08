@@ -12,7 +12,7 @@
     <script>
       $(document).ready(function(){
 
-
+        // constructs the html of the page
         var $body = $('body');
         $body.html('');
 
@@ -22,8 +22,12 @@
         var $content = $('<div class="content"/>');
         $body.append($content);
 
+        // add "New user?" link
+
+        // add text input for username 
+
         var $twittleForm = $('<div id="twittleForm"/>');
-        var $messageField = $('<textarea rows="3" cols="53" placeholder="Add your twittle here!" id="messageField"></textarea><br>');
+        var $messageField = $('<textarea rows="3" cols="50" placeholder="Add your twittle here!" id="messageField"></textarea><br>');
         $twittleForm.append($messageField);
         var $userField = $('<input type="text" name="userName" placeholder="Add your username here" id="userField">');
         $twittleForm.append($userField);
@@ -41,6 +45,7 @@
         $content.append($topButton);
 
 
+        // loads all twittles. is user is provided, the twittles are filtered based on that username
         function loadTweets(user) {
           $tweetList.html('');
 
@@ -74,6 +79,12 @@
         }
 
 
+        // event listeners
+
+        // upon clicking "New user?" link, call slideToggle() on new user text input
+
+        // upon submitting a new username, add that username to streams.users and set streams.users[username] to empty array
+
         $('#loadButton').on('click', function(){
           loadTweets();
         });
@@ -84,8 +95,7 @@
           var twt = {user: usr, message: msg, created_at: new Date()};
           addTweet(twt);
           loadTweets();
-          // clear form afterwards
-
+          $('#messageField').val('');
         });
 
         $('#topButton').on('click', function(){
@@ -94,6 +104,7 @@
         });
 
 
+        // loads inital twittles upon loading the page
         loadTweets();
 
       });

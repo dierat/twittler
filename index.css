@@ -26,14 +26,17 @@ h5 {
 }
 
 .content {
-	padding: 165px 0 50px 0;
-	max-width: 85%;
-	margin: 0px auto 0px auto;
+	padding: 180px 0 50px 0;
 }
 
 
 
-/* NEW USER FORM AND POST TWITTLE FORM */
+/* NEW USER FORM AND POST TWITTLE FORMS */
+
+#forms {
+	max-width: 340px;
+	margin: 0 auto;
+}
 
 #newUserLink {
 	color: #E88D67;
@@ -42,11 +45,10 @@ h5 {
 
 #newUserForm {
 	display: none;
-	margin: 20px 0 50px 0;
 }
 
 #twittleForm {
-	margin: 50px 0;
+	margin: 60px 0;
 }
 
 textarea {
@@ -102,7 +104,9 @@ button {
 /* TWITTLE LIST */
 
 #twittleList {
-	padding: 40px 0;
+	padding: 40px;
+	max-width: 600px;
+	margin: 0 auto;
 }
 
 .tweet {

@@ -23,16 +23,19 @@
         var $content = $('<div class="content"/>');
         $body.append($content);
 
+        var $forms = $('<div id="forms"/>');
+        $content.append($forms);
+
         var $newUserLink = $('<span id="newUserLink">New user? Click here!</span>');
-        $content.append($newUserLink);
+        $forms.append($newUserLink);
 
         var $newUserForm = $('<div id="newUserForm"/>');
-        $content.append($newUserForm);
+        $forms.append($newUserForm);
         var $newUserField = $('<input type="text" name="newUserField" placeholder="username" id="newUserField"/>');
         $newUserForm.append($newUserField);
         var $newUserSubmit = $('<button type="button" id="newUserSubmit">Create new user</button>');
         $newUserForm.append($newUserSubmit);
-        var $newUserSuccess = $('<div id="newUserSuccess" class="success">You\'re in! Twittle-dee-dee!</div>');
+        var $newUserSuccess = $('<div id="newUserSuccess" class="success">You\'re in! Twittle dee dee!</div>');
         $newUserForm.append($newUserSuccess);
         var $newUserErrorEmpty = $('<div id="newUserErrorEmpty" class="error">Please enter a username!</div>');
         $newUserForm.append($newUserErrorEmpty);
@@ -40,7 +43,7 @@
         $newUserForm.append($newUserErrorUsed);
 
         var $twittleForm = $('<div id="twittleForm"/>');
-        $content.append($twittleForm);
+        $forms.append($twittleForm);
         var $messageField = $('<textarea rows="3" cols="50" placeholder="Add your twittle here!" id="messageField"></textarea><br>');
         $twittleForm.append($messageField);
         var $userField = $('<input type="text" name="userName" placeholder="Add your username here" id="userField">');
@@ -55,10 +58,9 @@
         $twittleForm.append($twittleErrorEmptyUser);
         var $twittleErrorUser = $('<div id="twittleErrorUser" class="error">I\'m not familiar with that username. Please make sure you spelled it correctly, or create a new user.</div>');
         $twittleForm.append($twittleErrorUser);
-        
 
         var $loadButton = $('<button type="button" id="loadButton">Load all new twittles</button>');
-        $content.append($loadButton);
+        $forms.append($loadButton);
 
         var $twittleList = $('<div id="twittleList"/>');
         $content.append($twittleList);

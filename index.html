@@ -103,15 +103,30 @@
         }
 
 
+
+        // re-hide error and success messages when no longer relevant
+        function hideNewUserMessages(){
+          $('#newUserSuccess').slideUp();
+          $('#newUserErrorEmpty').slideUp();
+          $('#newUserErrorUsed').slideUp();
+        }
+
+        function hideNewTwittleMessages(){
+          $('#twittleSuccess').slideUp();
+          $('#twittleErrorEmptyMessage').slideUp();
+          $('#twittleErrorEmptyUser').slideUp();
+          $('#twittleErrorUser').slideUp();
+        }
+
+
+
         // event listeners
         $('#newUserLink').on('click', function(){
           $('#newUserForm').slideToggle();
         });
 
         $('#newUserField').on('keypress', function(){
-          $('#newUserSuccess').slideUp();
-          $('#newUserErrorEmpty').slideUp();
-          $('#newUserErrorUsed').slideUp();
+          hideNewUserMessages();
         });
 
         $('#newUserSubmit').on('click', function(){
@@ -122,23 +137,18 @@
             $('#newUserErrorUsed').slideDown();
           } else {
             streams.users[usr] = [];
+            hideNewUserMessages();
             $('#newUserSuccess').slideDown();
             $('#newUserField').val('');
           }
         });
 
         $('#messageField').on('keypress', function(){
-          $('#twittleSuccess').slideUp();
-          $('#twittleErrorEmptyMessage').slideUp();
-          $('#twittleErrorEmptyUser').slideUp();
-          $('#twittleErrorUser').slideUp();
+          hideNewTwittleMessages();
         });
 
         $('#userField').on('keypress', function(){
-          $('#twittleSuccess').slideUp();
-          $('#twittleErrorEmptyMessage').slideUp();
-          $('#twittleErrorEmptyUser').slideUp();
-          $('#twittleErrorUser').slideUp();
+          hideNewTwittleMessages();
         });
 
         $('#submitButton').on('click', function(){
@@ -154,6 +164,7 @@
             var twt = {user: usr, message: msg, created_at: new Date()};
             addTweet(twt);
             loadTweets();
+            hideNewTwittleMessages();
             $('#twittleSuccess').slideDown();
             $('#messageField').val('');
           }

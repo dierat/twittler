@@ -32,22 +32,36 @@
         $newUserForm.append($newUserField);
         var $newUserSubmit = $('<button type="button" id="newUserSubmit">Create new user</button>');
         $newUserForm.append($newUserSubmit);
+        var $newUserSuccess = $('<div id="newUserSuccess" class="success">You\'re in! Twittle-dee-dee!</div>');
+        $newUserForm.append($newUserSuccess);
+        var $newUserErrorEmpty = $('<div id="newUserErrorEmpty" class="error">Please enter a username!</div>');
+        $newUserForm.append($newUserErrorEmpty);
+        var $newUserErrorUsed = $('<div id="newUserErrorUsed" class="error">We already have a user by the name! Is that you?? If not, please choose another username!</div>');
+        $newUserForm.append($newUserErrorUsed);
 
         var $twittleForm = $('<div id="twittleForm"/>');
+        $content.append($twittleForm);
         var $messageField = $('<textarea rows="3" cols="50" placeholder="Add your twittle here!" id="messageField"></textarea><br>');
         $twittleForm.append($messageField);
         var $userField = $('<input type="text" name="userName" placeholder="Add your username here" id="userField">');
         $twittleForm.append($userField);
         var $submitButton = $('<button type="button" id="submitButton">Submit your twittle</button>');
-        // add div with error message for nonexistent usernames
         $twittleForm.append($submitButton);
-        $content.append($twittleForm);
+        var $twittleSuccess = $('<div id="twittleSuccess" class="success">Twittled!</div>');
+        $twittleForm.append($twittleSuccess);
+        var $twittleErrorEmptyMessage = $('<div id="twittleErrorEmptyMessage" class="error">Please write a twittle to share with your friends!</div>');
+        $twittleForm.append($twittleErrorEmptyMessage);
+        var $twittleErrorEmptyUser = $('<div id="twittleErrorEmptyUser" class="error">Please enter a username so we know who\'s twittling!</div>');
+        $twittleForm.append($twittleErrorEmptyUser);
+        var $twittleErrorUser = $('<div id="twittleErrorUser" class="error">I\'m not familiar with that username. Please make sure you spelled it correctly, or create a new user.</div>');
+        $twittleForm.append($twittleErrorUser);
+        
 
         var $loadButton = $('<button type="button" id="loadButton">Load all new twittles</button>');
         $content.append($loadButton);
 
-        var $tweetList = $('<div id="tweetList"/>');
-        $content.append($tweetList);
+        var $twittleList = $('<div id="twittleList"/>');
+        $content.append($twittleList);
 
         var $topButton = $('<button type="button" id="topButton">Back to top</button>');
         $content.append($topButton);
@@ -55,7 +69,7 @@
 
         // loads all twittles. is user is provided, the twittles are filtered based on that username
         function loadTweets(user) {
-          $tweetList.html('');
+          $twittleList.html('');
 
           var stream;
 
@@ -75,7 +89,7 @@
 
             var $tweet = $('<div class="tweet"><span class="user">@' + user + '</span> <span class="time">(' + time + ')</span>: <span class="message">' + message + '</span></div>');
 
-            $tweetList.append($tweet);
+            $twittleList.append($tweet);
             index -= 1;
           }
 
@@ -88,25 +102,44 @@
 
 
         // event listeners
-
-        // upon clicking "New user?" link, call slideToggle() on new user text input
         $('#newUserLink').on('click', function(){
           $('#newUserForm').slideToggle();
         });
 
-        // upon submitting a new username, add that username to streams.users and set streams.users[username] to empty array
-
-        $('#loadButton').on('click', function(){
-          loadTweets();
+        $('#newUserSubmit').on('click', function(){
+          var usr = $('#newUserField').val();
+          if (usr.length === 0){
+            $('#newUserErrorEmpty').slideDown();
+          } else if (streams.users[usr]){
+            $('#newUserErrorUsed').slideDown();
+          } else {
+            streams.users[usr] = [];
+            $('#newUserSuccess').slideDown();
+            $('#newUserField').val('');
+          }
         });
 
         $('#submitButton').on('click', function(){
           var msg = $("#messageField").val();
           var usr = $("#userField").val();
-          var twt = {user: usr, message: msg, created_at: new Date()};
-          addTweet(twt);
+          if (msg.length === 0) {
+            $('#twittleErrorEmptyMessage').slideDown();
+          } else if (usr.length === 0) {
+            $('#twittleErrorEmptyUser').slideDown();
+          } else if (!streams.users[usr]) {
+            $('#twittleErrorUser').slideDown();
+          } else {
+            var twt = {user: usr, message: msg, created_at: new Date()};
+            addTweet(twt);
+            loadTweets();
+            $('#twittleSuccess').slideDown();
+            $('#messageField').val('');
+          }
+
+        });
+
+        $('#loadButton').on('click', function(){
           loadTweets();
-          $('#messageField').val('');
         });
 
         $('#topButton').on('click', function(){

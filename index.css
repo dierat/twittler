@@ -52,7 +52,7 @@ h5 {
 textarea {
 	margin-bottom: 10px;
 	font-family: 'Delius Swash Caps', cursive;
-	color: #454559;
+	color: #7B8CDE;
 	font-size: 12px;
 	border-radius: 5px;
 	border-color: #A4D8CD;
@@ -61,7 +61,7 @@ textarea {
 
 input {
 	font-family: 'Delius Swash Caps', cursive;
-	color: #454559;
+	color: #7B8CDE;
 	margin-right: 10px;
 	width: 152px;
 	height: 35px;
@@ -85,11 +85,23 @@ button {
 	cursor: pointer;
 }
 
+.success {
+	color: #A4D8CD;
+	padding: 10px 0;
+	display: none;
+}
+
+.error {
+	color: #454559;
+	padding: 10px 0;
+	display: none;
+}
+
 
 
 /* TWITTLE LIST */
 
-#tweetList {
+#twittleList {
 	padding: 40px 0;
 }
 

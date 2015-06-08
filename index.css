@@ -1,0 +1,52 @@
+
+html {
+
+}
+
+body {
+	margin: 0;
+}
+
+.content {
+	padding-top: 155px;
+	max-width: 80%;
+	margin: 0px auto 0px auto;
+}
+
+header {
+	position: fixed;
+	width: 100%;
+	text-align: center;
+	background-color: blue;
+	font-family: 'Old Standard TT', serif;
+	color: white;
+	font-size: 18px;
+	padding: 10px;
+}
+
+h1 {
+	font-style: italic;
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
+h5 {
+	margin-bottom: 8px;
+}
+
+.tweet {
+	padding: 5px;
+	font-family: 'Delius Swash Caps', cursive;
+}
+
+.user {
+	color: blue;
+}
+
+.time {
+	color: gray;
+}
+
+.message {
+
+}

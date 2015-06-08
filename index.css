@@ -4,10 +4,6 @@ body {
 	color: #454559;
 }
 
-a {
-	color: #E88D67;
-}
-
 header {
 	position: absolute;
 	width: 100%;
@@ -52,12 +48,12 @@ input {
 button {
 	font-size: 16px;
 	font-family: 'Old Standard TT', serif;
-	font-style: bold;
 	border: none;
 	background-color: #E88D67;
 	color: white;
 	border-radius: 5px;
 	padding: 9px 14px;
+	cursor: pointer;
 }
 
 #tweetList {
@@ -69,8 +65,12 @@ button {
 	font-family: 'Delius Swash Caps', cursive;
 }
 
-#tweetList .user {
+.user {
 	color: #7B8CDE;
+}
+
+.user:hover {
+	cursor: pointer;
 }
 
 .time {

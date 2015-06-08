@@ -19,12 +19,19 @@
         var $header = $('<header><h1>Welcome to Twittler</h1><h5>where your friends twittle their thumbs out loud!</h5></header>');
         $body.append($header);
 
+        // can we append multiple elements to an element at once? then we could define all of the sub elements and have one line that appends them to the master element
         var $content = $('<div class="content"/>');
         $body.append($content);
 
-        // add "New user?" link
+        var $newUserLink = $('<span id="newUserLink">New user? Click here!</span>');
+        $content.append($newUserLink);
 
-        // add text input for username 
+        var $newUserForm = $('<div id="newUserForm"/>');
+        $content.append($newUserForm);
+        var $newUserField = $('<input type="text" name="newUserField" placeholder="username" id="newUserField"/>');
+        $newUserForm.append($newUserField);
+        var $newUserSubmit = $('<button type="button" id="newUserSubmit">Create new user</button>');
+        $newUserForm.append($newUserSubmit);
 
         var $twittleForm = $('<div id="twittleForm"/>');
         var $messageField = $('<textarea rows="3" cols="50" placeholder="Add your twittle here!" id="messageField"></textarea><br>');
@@ -32,6 +39,7 @@
         var $userField = $('<input type="text" name="userName" placeholder="Add your username here" id="userField">');
         $twittleForm.append($userField);
         var $submitButton = $('<button type="button" id="submitButton">Submit your twittle</button>');
+        // add div with error message for nonexistent usernames
         $twittleForm.append($submitButton);
         $content.append($twittleForm);
 
@@ -82,6 +90,9 @@
         // event listeners
 
         // upon clicking "New user?" link, call slideToggle() on new user text input
+        $('#newUserLink').on('click', function(){
+          $('#newUserForm').slideToggle();
+        });
 
         // upon submitting a new username, add that username to streams.users and set streams.users[username] to empty array
 

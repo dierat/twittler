@@ -31,8 +31,22 @@ h5 {
 	margin: 0px auto 0px auto;
 }
 
-#twittleForm {
+
+
+/* NEW USER FORM AND POST TWITTLE FORM */
+
+#newUserLink {
+	color: #E88D67;
+	cursor: pointer;
+}
+
+#newUserForm {
+	display: none;
 	margin: 20px 0 50px 0;
+}
+
+#twittleForm {
+	margin: 50px 0;
 }
 
 textarea {
@@ -71,6 +85,10 @@ button {
 	cursor: pointer;
 }
 
+
+
+/* TWITTLE LIST */
+
 #tweetList {
 	padding: 40px 0;
 }
@@ -97,6 +115,10 @@ button {
 	color: #454559;
 	margin-left: 7px;
 }
+
+
+
+/* BACK TO TOP BUTTON */
 
 #topButton {
 	display: block;

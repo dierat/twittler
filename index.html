@@ -11,35 +11,53 @@
 
     <script>
       $(document).ready(function(){
+
+
         var $body = $('body');
         $body.html('');
 
-        var $header = '<header><h1>Welcome to Twittler!</h1><h5>where your friends twittle their thumbs out loud!</h5></header>';
+        var $header = $('<header><h1>Welcome to Twittler!</h1><h5>where your friends twittle their thumbs out loud!</h5></header>');
         $body.append($header);
 
-        var $content = $('<div class="content">');
+        var $content = $('<div class="content"/>');
+        $body.append($content);
+
+        var $loadButton = $('<button type="button" id="loadButton">Load more twittles!</button>');
+        $content.append($loadButton);
+
+        var $tweetList = $('<div id="tweetList"/>');
 
 
-        /* allow the user to click on a username to see that user's timeline */
-        /* show the user new tweets somehow (as they're created or after the user hits a button) */
-        /* allow the user to create tweets (shouldn't need to modify main js file) */
-        /* redesign interface to be not hideous */
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
+        function loadTweets() {
+          /* allow the user to click on a username to see that user's timeline */
+          /* allow the user to create tweets (shouldn't need to modify main js file) */
+          $tweetList.html('');
 
-          var user = tweet.user;
-          var time = moment(tweet.created_at).fromNow();
-          var message = tweet.message;
+          var index = streams.home.length - 1;
+          while(index >= 0){
+            var tweet = streams.home[index];
 
-          var $tweet = $('<div class="tweet"><span class="user">@' + user + '</span> <span class="time">(' + time + ')</span>: <span class="message">' + message + '</span></div>');
+            var user = tweet.user;
+            var time = moment(tweet.created_at).fromNow();
+            var message = tweet.message;
 
-          $tweet.appendTo($content);
-          index -= 1;
+            var $tweet = $('<div class="tweet"><span class="user">@' + user + '</span> <span class="time">(' + time + ')</span>: <span class="message">' + message + '</span></div>');
+
+            $tweetList.append($tweet);
+            index -= 1;
+          }
+
         }
 
-        $content.append('</div>');
-        $body.append($content);
+
+        $content.append($tweetList);
+
+        $('#loadButton').on('click', function(){
+          console.log("clicked!!!");
+          loadTweets();
+        });
+
+        loadTweets();
 
       });
 

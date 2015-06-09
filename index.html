@@ -17,56 +17,35 @@
         $body.html('');
 
         var $header = $('<header><h1>Welcome to Twittler</h1><h5>where your friends twittle their thumbs out loud!</h5></header>');
-        $body.append($header);
-
-        // can we append multiple elements to an element at once? then we could define all of the sub elements and have one line that appends them to the master element
         var $content = $('<div class="content"/>');
-        $body.append($content);
+        $body.append($header, $content);
 
         var $forms = $('<div id="forms"/>');
-        $content.append($forms);
+        var $twittleList = $('<div id="twittleList"/>');
+        var $topButton = $('<button type="button" id="topButton">Back to top</button>');
+        $content.append($forms, $twittleList, $topButton);
 
         var $newUserLink = $('<span id="newUserLink">New user? Click here!</span>');
-        $forms.append($newUserLink);
-
         var $newUserForm = $('<div id="newUserForm"/>');
-        $forms.append($newUserForm);
-        var $newUserField = $('<input type="text" name="newUserField" placeholder="username" id="newUserField"/>');
-        $newUserForm.append($newUserField);
-        var $newUserSubmit = $('<button type="button" id="newUserSubmit">Create new user</button>');
-        $newUserForm.append($newUserSubmit);
-        var $newUserSuccess = $('<div id="newUserSuccess" class="success">You\'re in! Twittle dee dee!</div>');
-        $newUserForm.append($newUserSuccess);
-        var $newUserErrorEmpty = $('<div id="newUserErrorEmpty" class="error">Please enter a username</div>');
-        $newUserForm.append($newUserErrorEmpty);
-        var $newUserErrorUsed = $('<div id="newUserErrorUsed" class="error">We already have a user by the name! Is that you?? If not, please choose another username</div>');
-        $newUserForm.append($newUserErrorUsed);
-
         var $twittleForm = $('<div id="twittleForm"/>');
-        $forms.append($twittleForm);
-        var $messageField = $('<textarea rows="3" cols="50" placeholder="Add your twittle here!" id="messageField"></textarea><br>');
-        $twittleForm.append($messageField);
-        var $userField = $('<input type="text" name="userName" placeholder="Add your username here" id="userField">');
-        $twittleForm.append($userField);
-        var $submitButton = $('<button type="button" id="submitButton">Submit your twittle</button>');
-        $twittleForm.append($submitButton);
-        var $twittleSuccess = $('<div id="twittleSuccess" class="success">Twittled!</div>');
-        $twittleForm.append($twittleSuccess);
-        var $twittleErrorEmptyMessage = $('<div id="twittleErrorEmptyMessage" class="error">Please write a twittle to share with your friends!</div>');
-        $twittleForm.append($twittleErrorEmptyMessage);
-        var $twittleErrorEmptyUser = $('<div id="twittleErrorEmptyUser" class="error">Please enter a username so we know who\'s twittling!</div>');
-        $twittleForm.append($twittleErrorEmptyUser);
-        var $twittleErrorUser = $('<div id="twittleErrorUser" class="error">I\'m not familiar with that username. Please make sure you spelled it correctly, or create a new user.</div>');
-        $twittleForm.append($twittleErrorUser);
-
         var $loadButton = $('<button type="button" id="loadButton">Load all new twittles</button>');
-        $forms.append($loadButton);
+        $forms.append($newUserLink, $newUserForm, $twittleForm, $loadButton);
 
-        var $twittleList = $('<div id="twittleList"/>');
-        $content.append($twittleList);
+        var $newUserField = $('<input type="text" name="newUserField" placeholder="username" id="newUserField"/>');
+        var $newUserSubmit = $('<button type="button" id="newUserSubmit">Create new user</button>');
+        var $newUserSuccess = $('<div id="newUserSuccess" class="success">You\'re in! Twittle dee dee!</div>');
+        var $newUserErrorEmpty = $('<div id="newUserErrorEmpty" class="error">Please enter a username</div>');
+        var $newUserErrorUsed = $('<div id="newUserErrorUsed" class="error">We already have a user by the name! Is that you?? If not, please choose another username</div>');
+        $newUserForm.append($newUserField, $newUserSubmit, $newUserSuccess, $newUserErrorEmpty, $newUserErrorUsed);
 
-        var $topButton = $('<button type="button" id="topButton">Back to top</button>');
-        $content.append($topButton);
+        var $messageField = $('<textarea rows="3" cols="50" placeholder="Add your twittle here!" id="messageField"></textarea><br>');
+        var $userField = $('<input type="text" name="userName" placeholder="Add your username here" id="userField">');
+        var $submitButton = $('<button type="button" id="submitButton">Submit your twittle</button>');
+        var $twittleSuccess = $('<div id="twittleSuccess" class="success">Twittled!</div>');
+        var $twittleErrorEmptyMessage = $('<div id="twittleErrorEmptyMessage" class="error">Please write a twittle to share with your friends!</div>');
+        var $twittleErrorEmptyUser = $('<div id="twittleErrorEmptyUser" class="error">Please enter a username so we know who\'s twittling!</div>');
+        var $twittleErrorUser = $('<div id="twittleErrorUser" class="error">I\'m not familiar with that username. Please make sure you spelled it correctly, or create a new user.</div>');
+        $twittleForm.append($messageField, $userField, $submitButton, $twittleSuccess, $twittleErrorEmptyMessage, $twittleErrorEmptyUser, $twittleErrorUser);
 
 
         // loads all twittles. is user is provided, the twittles are filtered based on that username
